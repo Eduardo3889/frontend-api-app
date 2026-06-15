@@ -46,6 +46,33 @@ docker compose up --build
 http://localhost:8080
 ```
 
+## Integracao com o backend da atividade anterior
+
+Este repositorio contem o frontend completo e esta preparado para rodar junto com o backend usando Docker Compose.
+
+Por padrao, o `docker-compose.yml` espera que o backend esteja dentro desta estrutura:
+
+```text
+frontend-api-app/
+  backend/
+    Dockerfile
+    ...
+  src/
+  Dockerfile
+  docker-compose.yml
+  README.md
+```
+
+Se o backend estiver em outra pasta, ajuste a variavel `BACKEND_CONTEXT` no arquivo `.env`:
+
+```env
+BACKEND_CONTEXT=../nome-da-pasta-do-backend
+```
+
+Se o backend estiver em outro repositorio, informe o link desse repositorio na entrega e mantenha este frontend apontando para ele pelo `docker-compose.yml` ou pelas variaveis de ambiente.
+
+O frontend acessa a API por `/api`. Dentro do container, o Nginx encaminha essas chamadas para o servico `backend` na porta `3000`.
+
 ## Contratos esperados da API
 
 Os caminhos podem ser alterados no `.env`. Por padrao a aplicacao usa:
